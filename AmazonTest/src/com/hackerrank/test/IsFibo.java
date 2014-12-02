@@ -28,12 +28,32 @@ public class IsFibo {
 		if (num.compareTo(zero) <= 0) {
 			return false;
 		}
+		if (num.equals(one) || num.equals(zero))
+			return true;
+		BigDecimal previousFibo = one;
+		BigDecimal nextFibo = two;
+		BigDecimal temp = null;
+		while (nextFibo.compareTo(num) < 0) {
+			temp = nextFibo;
+			nextFibo = nextFibo.add(previousFibo);
+			previousFibo = temp;
+		}
+		return nextFibo.equals(num);
 
-		BigDecimal base = num.multiply(num).multiply(five);
-		BigDecimal possibility1 = base.add(four);
-		BigDecimal possibility2 = base.subtract(four);
+		// BigDecimal base = num.multiply(num).multiply(five);
+		// BigDecimal possibility1 = base.add(four);
+		// BigDecimal possibility2 = base.subtract(four);
+		//
+		// return (isPerfectSquare(possibility1) ||
+		// isPerfectSquare(possibility2));
+	}
 
-		return (isPerfectSquare(possibility1) || isPerfectSquare(possibility2));
+	public BigDecimal computeFibo(BigDecimal N) {
+		if (N.equals(one))
+			return one;
+		if (N.equals(zero))
+			return zero;
+		return computeFibo(N.subtract(one)).add(computeFibo(N.subtract(two)));
 	}
 
 	public static boolean isPerfectSquare(BigDecimal num) {

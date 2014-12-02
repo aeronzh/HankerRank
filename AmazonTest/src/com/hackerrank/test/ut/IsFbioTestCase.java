@@ -21,7 +21,7 @@ public class IsFbioTestCase {
 	}
 	@Test
 	public void testIsFibonacci(){
-		assertEquals(true, IsFibo.isFibonacci(new BigDecimal(3)));
+		assertEquals(true, IsFibo.isFibonacci(new BigDecimal(13)));
 	}
 
 }
